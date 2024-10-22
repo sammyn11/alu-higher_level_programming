@@ -1,14 +1,32 @@
 #!/usr/bin/node
-const request = require('request');
-request.get(process.argv[2], (err, response, body) => {
-  if (err) console.log(err);
-  const result = {};
-  JSON.parse(body).filter(el => el.completed).forEach(el => {
-    if (result[el.userId] === undefined) {
-      result[el.userId] = 1;
-    } else {
-      result[el.userId] += 1;
+const req = require('request');
+
+function getCompletedTasks (data, userId) {
+  let count = 0;
+  data
+    .filter((element) => element.userId === userId)
+    .forEach((task) => {
+      if (task.completed) {
+        count++;
+      }
+    });
+  return count;
+}
+
+const url = process.argv[2];
+
+const results = {};
+req.get(url, (err, res) => {
+  if (err) {
+    throw err;
+  }
+  const data = JSON.parse(res.body);
+  data.forEach((element) => {
+    if (!(element.userId in results)) {
+      if (getCompletedTasks(data, element.userId) > 0) {
+        results[element.userId] = getCompletedTasks(data, element.userId);
+      }
     }
   });
-  console.log(result);
+  console.log(results);
 });

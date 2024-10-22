@@ -1,18 +1,18 @@
 #!/usr/bin/python3
-"""Returns list of pascal triangles"""
+'''Pascal’s triangle of n:'''
 
 
 def pascal_triangle(n):
-    """Returns list of pascal triangles"""
-    list_of_lists = []
+    '''returns the pascals triangle '''
+    outer_list = []
 
     for i in range(n):
         if i == 0:
-            list_of_lists.append([1])
+            outer_list.append([1])
         elif i == 1:
-            list_of_lists.append([1, 1])
+            outer_list.append([1, 1])
         else:
-            last_list = list_of_lists[-1]
+            last_list = outer_list[-1]
             count = 0
             new_list = [1]
             while count < len(last_list):
@@ -22,5 +22,5 @@ def pascal_triangle(n):
                 except IndexError:
                     break
             new_list.append(1)
-            list_of_lists.append(new_list)
-    return list_of_lists
+            outer_list.append(new_list)
+    return outer_list

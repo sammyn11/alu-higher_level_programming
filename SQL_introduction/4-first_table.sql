@@ -1,4 +1,5 @@
--- Creates a table called first_table in current db
+-- create a table in sql 
 CREATE TABLE IF NOT EXISTS first_table(
-id INT,
-name VARCHAR(256));
+    id int,
+    name varchar(255)
+);

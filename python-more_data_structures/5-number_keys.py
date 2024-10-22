@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 def number_keys(a_dictionary):
-    num = 0
-    list_keys = list(a_dictionary.keys())
+    sum_keys = 0
+    for key, value in a_dictionary.items():
+        sum_keys += 1
 
-    for i in list_keys:
-        num += 1
-
-    return (num)
+    return int(sum_keys)

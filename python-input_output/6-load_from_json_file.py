@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""Are you docuemnted ?"""
+'''Write a function that creates an Object from a “JSON file”:'''
 
 
 import json
 
 
 def load_from_json_file(filename):
-    """How far now"""
-    with open(filename, "r") as f:
+    '''Function that does and runs the work'''
+    with open(filename, 'r') as f:
         return json.load(f)

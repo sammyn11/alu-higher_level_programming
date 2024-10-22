@@ -1,22 +1,18 @@
 #!/usr/bin/python3
-""" module list states
-from database"""
+"""
+Lists all values in the states tables of a database where name
+matches the argument in a safe way
+"""
+import sys
+import MySQLdb
 
-if __name__ == "__main__":
-    import MySQLdb
-    from sys import argv
-    # port and host are default local and 3306
-    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
+if __name__ == '__main__':
+    db = MySQLdb.connect(user=sys.argv[1], passwd=sys.argv[2],
+                         db=sys.argv[3], port=3306)
+
     cur = db.cursor()
-    # vert input from users
-    # use string formating to be specific
-    cur.execute("SELECT * FROM states WHERE states.name = %s\
-    ORDER BY states.id ASC", (argv[4],))
-    result = cur.fetchall()
-    # check if second argument of tuple
-    # is same as the passed argument
-    for i in result:
-        print(i)
-    # close cursor and db
-    cur.close()
-    db.close()
+    cur.execute("SELECT * FROM states WHERE name = %s;", (sys.argv[4],))
+    states = cur.fetchall()
+
+    for state in states:
+        print(state)

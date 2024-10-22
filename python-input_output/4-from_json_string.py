@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Are you docuemnted ?"""
+''' returns object (Python data structure) represented by a JSON string:'''
 
 
 import json
 
 
-def from_json_string(my_str):
-    """How far now"""
-    return json.loads(my_str)
+def from_json_string(my_obj):
+    '''The real function that returns a json obj'''
+    return json.loads(my_obj)

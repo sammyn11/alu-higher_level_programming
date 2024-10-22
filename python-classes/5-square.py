@@ -12,10 +12,12 @@ class Square:
         ''' init size '''
         self.__size = size
 
+    @property
     def size(self):
         "returns the size att"
         return self.__size
 
+    @size.setter
     def size(self, size):
         '''asign the size to the size att'''
         if not isinstance(size, int):
@@ -33,6 +35,6 @@ class Square:
             print()
         else:
             for i in range(self.__size):
-                for j in range(self.__size):
+                for m in range(self.__size):
                     print("#", end="")
                 print()
